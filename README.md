@@ -23,6 +23,7 @@ The addon sets in-game keybinds based on the button mappings provided by SteamDe
 * The Y, B and X buttons are bound to the 3 action buttons on the right side
 * The D-Pad is bound to the 4 action buttons on the left side
 * The L1 and R1 buttons are used for next-target and previous-target selection
+* The L2 (LT) and R2 (RT) triggers are modifiers that switch to another set of 8 action buttons (see below)
 * The "Tab Key" opens the world map
 * The "Left Trackpad" is bound to:
   - Up: Toggle bags and inventory
@@ -30,12 +31,32 @@ The addon sets in-game keybinds based on the button mappings provided by SteamDe
   - Down: Toggle friend list
   - Left: Toggle spell book
 
+### Modifier Layers (WoW Forever style)
+
+Similar to the gamepad UI of WoW Forever, holding the triggers switches the D-pad and face buttons to another layer of actions. This gives you 4 layers with 8 buttons each:
+
+| Layer | Modifier key | Action bar used | Buttons |
+|-------|--------------|-----------------|---------|
+| None | - | Main action bar | D-pad, Y, X, B (A is always Jump) |
+| LT | Shift | Bottom left bar (buttons 1-8) | D-pad, Y, B, A, X |
+| RT | Ctrl | Bottom right bar (buttons 1-8) | D-pad, Y, B, A, X |
+| LT + RT | Ctrl + Shift | Right bar (buttons 1-8) | D-pad, Y, B, A, X |
+
+The order of the bar buttons is: D-pad up, right, down, left, followed by Y, B, A, X.
+
+> The triggers are mouse buttons in the SteamDeck's "Keyboard (WASD) and Mouse" layout. To use the modifier layers, map **L2 to Left Shift** and **R2 to Left Control** in the Steam Input controller configuration. If you use other software to map your controller, bind the triggers to those keys there.
+
 ## UI Changes
 
 * The action bar size is reduced and got all action buttons removed, to have only the
 bag buttons and the micro panel left.
 * The normal action buttons are moved to the left and the right side
-to match the gamepad layout.
+to match the gamepad layout: D-pad actions on the left and face button actions on the right.
+* Each side shows all 4 modifier layers around each other, like in WoW Forever:
+no modifier on top, LT on the left, RT on the right and LT+RT at the bottom.
+* While a trigger is held, the active layer is highlighted and the others are faded out.
+* Empty action slots show the gamepad button they are bound to.
+* The layers scale down automatically to fit next to the chat on smaller screens.
 * Action buttons got their keybinds replaced by gamepad button icons.
 * Out-of-Range actions will be displayed as a gray-scaled texture.
 * The loot window is automatically positioned to have the most relevant part of it under your cursor.

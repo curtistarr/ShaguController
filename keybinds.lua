@@ -1,4 +1,16 @@
 local keybinds = CreateFrame("Frame", "ShaguControllerKeybinds")
+
+-- gamepad buttons in the order of the layer slots:
+-- D-pad up, right, down, left and Y, B, A, X
+keybinds.keys = { "UP", "RIGHT", "DOWN", "LEFT", "F", "E", "SPACE", "R" }
+
+-- the modifier keys that are sent by the triggers and their action bars
+keybinds.layers = {
+  ["SHIFT-"] = "MULTIACTIONBAR1BUTTON",      -- LT: bottom left bar
+  ["CTRL-"] = "MULTIACTIONBAR2BUTTON",       -- RT: bottom right bar
+  ["CTRL-SHIFT-"] = "MULTIACTIONBAR3BUTTON", -- LT+RT: right bar
+}
+
 keybinds:RegisterEvent("PLAYER_LOGIN")
 keybinds:RegisterEvent("PLAYER_LOGOUT")
 keybinds:SetScript("OnEvent", function()
@@ -21,7 +33,15 @@ keybinds:SetScript("OnEvent", function()
     SetBinding("UP", "ACTIONBUTTON5")                   -- Arrow-Up
     SetBinding("RIGHT", "ACTIONBUTTON10")               -- Arrow-Right
     SetBinding("DOWN", "ACTIONBUTTON11")                -- Arrow-Down
-    SetBinding("LEFT", "ACTIONBUTTON12")                -- Arrow-Down
+    SetBinding("LEFT", "ACTIONBUTTON12")                -- Arrow-Left
+
+    -- modifier layers: LT (Shift), RT (Ctrl) and LT+RT (Ctrl+Shift)
+    for prefix, bar in pairs(keybinds.layers) do
+      for id, key in pairs(keybinds.keys) do
+        SetBinding(prefix .. key, bar .. id)
+      end
+    end
+
     SaveBindings(GetCurrentBindingSet())
 
     -- notify the player for keybind changes
